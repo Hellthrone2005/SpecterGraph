@@ -7,7 +7,11 @@ By modeling complex directory structures (Users, Groups, Service Principals, and
 ---
 
 ## 🎨 System Canvas Telemetry
+
 The framework features a responsive, custom **Black & Deep Purple Cyberpunk UI Dashboard** that outputs identified vulnerabilities alongside interactive multi-hop attack trails and dedicated remediation playbooks.
+
+### 🖼️ Live Report Preview
+![SpecterGraph UI Dashboard Preview](tests/dashboard_preview.png)
 
 * **Topological Ingestion Core:** Evaluates structured entity relationships.
 * **Dijkstra Path Traversal Engine:** Traces exact structural hop links to core target assets.
@@ -28,6 +32,7 @@ The framework is decoupled into modular layers for production-grade maintenance:
  │    ├── 📄 mitigator.py      # Heuristic remediation blueprint compiler
  │    └── 📄 reporter.py       # Tailwind CSS UI dashboard compiler
  ├── 📁 tests/
- │    └── 📄 mock_tenant.json  # Stress-test data grid containing cyclical loops
+ │    ├── 📄 mock_tenant.json  # Stress-test data grid containing cyclical loops
+ │    └── 🖼️ dashboard_preview.png # Live reporting UI canvas asset
  ├── 📄 main.py               # Central runtime coordinator
  └── 📄 .gitignore            # Local environment protection rules
