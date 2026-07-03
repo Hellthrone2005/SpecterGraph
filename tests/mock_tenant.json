@@ -1,0 +1,79 @@
+{
+  "users": [
+    {"id": "U101", "name": "daksh.sharma@enterprise.local"},
+    {"id": "U102", "name": "contractor.test@enterprise.local"},
+    {"id": "U103", "name": "honeypot.user@enterprise.local"},
+    {"id": "U104", "name": "isolated.user@enterprise.local"}
+  ],
+  "groups": [
+    {
+      "id": "G201",
+      "name": "Helpdesk-Level-1",
+      "direct_members": ["U101"]
+    },
+    {
+      "id": "G202",
+      "name": "Server-Operators",
+      "direct_members": ["G201", "U102"]
+    },
+    {
+      "id": "G203",
+      "name": "Global-Admins",
+      "direct_members": ["G202"]
+    },
+    {
+      "id": "G_LOOP_A",
+      "name": "Cyclic-Group-Alpha",
+      "direct_members": ["G_LOOP_B", "U101"]
+    },
+    {
+      "id": "G_LOOP_B",
+      "name": "Cyclic-Group-Beta",
+      "direct_members": ["G_LOOP_C"]
+    },
+    {
+      "id": "G_LOOP_C",
+      "name": "Cyclic-Group-Gamma",
+      "direct_members": ["G_LOOP_A"]
+    },
+    {
+      "id": "G_HONEY_1",
+      "name": "Suspicious-Nested-Tier-1",
+      "direct_members": ["U103"]
+    },
+    {
+      "id": "G_HONEY_2",
+      "name": "Suspicious-Nested-Tier-2",
+      "direct_members": ["G_HONEY_1"]
+    },
+    {
+      "id": "G_ORPHAN",
+      "name": "Isolated-Group-Island",
+      "direct_members": ["U104"]
+    }
+  ],
+  "service_principals": [
+    {
+      "id": "SP301",
+      "name": "backup-automation-svc",
+      "direct_members": ["G202"]
+    }
+  ],
+  "assets": [
+    {
+      "id": "A401",
+      "name": "Active-Directory-Domain-Controller",
+      "controlled_by_group": "G203"
+    },
+    {
+      "id": "A402",
+      "name": "Azure-Root-Subscription-Tenant",
+      "controlled_by_group": "G_LOOP_B"
+    },
+    {
+      "id": "A403",
+      "name": "Low-Value-Honeypot-Workstation",
+      "controlled_by_group": "G_HONEY_2"
+    }
+  ]
+}
